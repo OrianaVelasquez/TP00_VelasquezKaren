@@ -28,7 +28,12 @@ public class Calculadora {
 		return n1 - n2;
 	}
 	public int divisionNumero() {
-		return n1 / n2;
+		if (n2>0) {
+			return n1 / n2;
+		}else {
+			return 0;
+		}
+		
 	}
 	public int multiplicacionNumero() {
 		return n1 * n2;
@@ -49,4 +54,15 @@ public class Calculadora {
 	              answer = answer * num;
 	          }
 	          return answer;
-}}}
+         }
+ }
+	  public int raizNumero() {
+			double resultadoraiz= Math.sqrt((double)this.n1);
+			return (int) resultadoraiz;	
+		}
+		
+		public double raizn() {
+			double resultadoraizn=Math. pow((double)this.n1,(double)1/this.n2);
+			return resultadoraizn;	
+		}	  
+}

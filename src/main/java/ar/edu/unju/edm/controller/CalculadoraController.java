@@ -64,4 +64,14 @@ public class CalculadoraController {
 		model.addAttribute("resultadoP", resultadoP);
 		return "resultadoP";
 	}
+	@GetMapping("/calculoRaiz")
+	public String getRaizPage(@RequestParam (name = "n1") int n1 , @RequestParam (name = "n2") int n2, Model model) {
+		int resultadoRZ= 0;
+		Calculadora nuevaCalculadora = new Calculadora();
+		nuevaCalculadora.setN1(n1);
+		nuevaCalculadora.setN2(n2);
+		resultadoRZ = nuevaCalculadora.raizNumero();
+		model.addAttribute("resultadoRZ", resultadoRZ);
+		return "resultadoRZ";
+	}
 	}
