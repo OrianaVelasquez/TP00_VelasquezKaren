@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import ar.edu.unju.edm.model.Calculadora;
+
 @Controller 
 public class CalculadoraController {
 
 	@GetMapping("/menu")
 	public String mostrarMenuCalculadora() {
 		return "index";
-		
 	}
+	
 	@GetMapping("/calculoSuma")
 	public String getSumaPage(@RequestParam (name = "n1") int n1 , @RequestParam (name = "n2") int n2, Model model) {
 		int resultadoS = 0;
@@ -36,13 +36,17 @@ public class CalculadoraController {
 	}
 	@GetMapping("/calculoDivision")
 	public String getDivisionPage(@RequestParam (name = "n1") int n1 , @RequestParam (name = "n2") int n2, Model model) {
-		int resultadoD = 0;
+		float resultadoD = 0;
 		Calculadora nuevaCalculadora = new Calculadora();
 		nuevaCalculadora.setN1(n1);
 		nuevaCalculadora.setN2(n2);
-		resultadoD = nuevaCalculadora.divisionNumero();
-		model.addAttribute("resultadoD", resultadoD);
-		return "resultadoD";
+		if (n2!=0) {
+			resultadoD= nuevaCalculadora.divisionNumero();
+			model.addAttribute("resultadoD", resultadoD);
+			return "resultadoD";
+		}else {
+			return "resultadoIncorrecto";
+		}
 	}
 	@GetMapping("/calculoMultiplicacion")
 	public String getMultiplicacionPage(@RequestParam (name = "n1") int n1 , @RequestParam (name = "n2") int n2, Model model) {
@@ -66,12 +70,22 @@ public class CalculadoraController {
 	}
 	@GetMapping("/calculoRaiz")
 	public String getRaizPage(@RequestParam (name = "n1") int n1 , @RequestParam (name = "n2") int n2, Model model) {
-		int resultadoRZ= 0;
+		double resultadoRZ= 0;
 		Calculadora nuevaCalculadora = new Calculadora();
 		nuevaCalculadora.setN1(n1);
 		nuevaCalculadora.setN2(n2);
-		resultadoRZ = nuevaCalculadora.raizNumero();
-		model.addAttribute("resultadoRZ", resultadoRZ);
-		return "resultadoRZ";
+		if (n2!=0) {
+			resultadoRZ = nuevaCalculadora.raizNumero();
+			model.addAttribute("resultadoRZ", resultadoRZ);
+			return "resultadoRZ";
+		}else {
+			return "resultadoRaizIncorrecta";
+		}
+	  }
 	}
-	}
+
+
+
+
+
+

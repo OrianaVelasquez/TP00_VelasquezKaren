@@ -7,7 +7,7 @@ public class Estudiante {
    private float peso;
    private char genero;
    
-   //constructor por defecto
+   //constructor 
    
    public Estudiante() {
 	   // TODO auto-generated constructor stub
